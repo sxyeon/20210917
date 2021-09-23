@@ -12,8 +12,11 @@ public class FriendExe {
 		// CompFriend -> Friend, UnivFriend -> Friend
 		friends = new Friend[100];
 		friends[0] = new Friend("홍길동", "1111-2111");
+		friends[5] = new Friend("홍길동", "1111-2111");
 		friends[1] = new Friend("김길동", "2222-2111");
 		friends[2] = new Friend("홍수아", "2222-1311");
+		friends[3] = new UnivFriend("박수진", "2345-1234", "수학과");
+		friends[4] = new CompFriend("김철수", "2222-1212", "영업부")
 	}
 
 	public static FriendExe getInstance() {
@@ -106,5 +109,42 @@ public class FriendExe {
 			}
 
 		} // end of for
+		
+		private void modify() {
+			
+			System.out.println("[친구목록]");
+			for(int i=0; i<friends.length; i++) {
+				if (friends[i] != null)
+				System.out.println("[" + i + "]" + friends[i].toString())
+			}
+			int num = ScanUtil.readInt("친구를 선택하세요");
+			String phone = ScanUtil.readStr("바꿀 번호를 입력하세요");
+			
+			friends[num].setPhone(null);
+			if(friends[num] instanceof UnivFriend) {
+				String major = ScanUtil.readStr("바꿀 전공을 입력하세요");
+				((UnivFriend) friends[num]).setMajor(major);
+			} else if(friends[num] instanceof ComFriend) {
+				String depart = ScanUtil.readStr("바꿀 부서를 입력하세요");
+				((ComFriend) friends[num]).setDepart(depart);
+			}
+			
+			System.out.println("수정완료");
+		}
+		
+		private void remove() {
+			System.out.println("[친구목록]");
+			for (int i=0; i<friends.length; i++) {
+				if (friends[i] != null) {
+					friends[num] = null;
+					System.out.println("삭제완료.");
+					
+				} else {
+					System.out.println("삭제할 정보가 없습니다.");
+				}
+			}
+			
+		}
+		
 	}
 }
