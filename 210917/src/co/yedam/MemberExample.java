@@ -31,6 +31,10 @@ public class MemberExample {
 			member.showInfo();
 
 		}
+		
+		Student s1 = new Student();
+		s1.name = "Hong";
+		s1.score = 90;
 
 	}
 
